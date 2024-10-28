@@ -1,0 +1,22 @@
+This is the Liner:
+
+	         |	
+	 	 |
+	        / \
+	       /   \ 
+	      /	    \
+	  ___/       \___
+	     \       /
+	      \_____/
+	      |     |
+	      |     |
+	      |_____|
+	      |     |
+	      |     |
+	      |_____|
+	     /	     \
+	    /         \
+
+
+
+Note: some of the functions defined in ~/Dropbox/Three-Loop-Five-Point-Feynman-Integral/2047/Results/BASIS_DEF.m are probably not necessary. The 51-55 and 61-65. 
