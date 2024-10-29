@@ -20,3 +20,18 @@ This is the Liner:
 	     /	     \
 	    /         \
 
+
+## Description for all of these.  
+*UT/<sectorid>.m 		-->> UT integrals in each sector.
+*Transcendeltal_Const/
+*Letter.m			-->> Some basic definition of the alphabet letters and the square root. 
+*MI_all.txt			-->> All 316 master integrals provided by NeatIBP. 
+*Weight-1-Integrals.m		-->> Weight-1-Integrals in terms of penatgon functions.
+*Weight-2-Integrals.m		-->> these function are simply Log and PolyLog in Mathematica, most of them are labeled as F[i,j].
+*Weight-3-Integrals.m		-->> the postion 123 is just a palce holder for the only one parity odd function. see mathcalP_W3.m
+*basis-def.m			-->> explicit definition for F[i,j] in terms of Log and PolyLog.
+*mathcalP_W3.m			-->> The only one parity odd function at Weight-3. 
+*BC-W0W1W2W3.m			-->> The analytic boundary values from Weight-1 to Weight-3. 
+
+
+

@@ -1,20 +1,28 @@
 (* ::Package:: *)
 
+Print["========================================================================================================"];
+Print["Analytic Computation of Three-Loop Five-Point Feynman Integrals"];
+Print["Yuanche Liu, Antonela Matija\[SHacek]i\[CAcute],  Julian Miczajka, Yingxuan Xu, Yongqun Xu, Yang Zhang"];
+Print["ArXiv: 2411.xxxx"];
+Print["yongqunxu@mail.ustc.edu.cn"];
+Print["========================================================================================================"];
+
+
 (*************************User Input Information*****************************************)
 destination=Values[{s12->-(79/46),s23->-(129/29),s34->-(89/36),s45->-(87/55),s15->-(51/13)}];
 NIntegrateOptions={WorkingPrecision->2^5,PrecisionGoal->2^5,AccuracyGoal->2^6,MaxRecursion->20};
 (****************************************************************************************)
 
 
-Print["This is a script to evaluate the UT integrals at: \n \n "]
+Print["\n This is a proof-of-concept demostration to evaluate the UT integrals via one-fold integration with auxiliary B-matrix at: \n \n "]
 Print["  ",Thread[{s12,s23,s34,s45,s15}->destination]," \n \n "];
 timer=AbsoluteTime[];
 If[Not@TrueQ[$FrontEnd==Null],SetDirectory@NotebookDirectory[],SetDirectory@Directory[]];
 
 
 Print["Loading Definitions..."];
-ConstT=Get["/home/yqx/Git-Hub/3L5P_Liner/ConstT.m"];(*A similarity transformation, see our article.*)
-Atilde=Normal[ConstT . Get["Atilde.m"] . Inverse[ConstT]]/.{Log[W[1]]->Log[-W[1]],Log[W[2]]->Log[-W[2]],
+ConstT=Get["./ConstT.m"];(*A similarity transformation, see our article.*)
+Atilde=(ConstT . Get["Atilde.m"] . Inverse[ConstT])/.{Log[W[1]]->Log[-W[1]],Log[W[2]]->Log[-W[2]],
 Log[W[3]]->Log[-W[3]],Log[W[4]]->Log[-W[4]],Log[W[5]]->Log[-W[5]],
 Log[W[6]]->Log[-W[6]],Log[W[7]]->Log[-W[7]],Log[W[8]]->Log[-W[8]],
 Log[W[9]]->Log[-W[9]],Log[W[10]]->Log[-W[10]],Log[W[11]]->Log[W[11]],
@@ -28,7 +36,7 @@ to avoid unnecessary branch problem*)
 
 
 basisdef=Get["basis-def.m"];(*The definition of the function F[i,j]*)
-B=Get["B-Kernel.m"];(*This B kernel is defined by dB==dA.A, with A defined as the variable Atilde in the above line.*)
+B=Get["Btilde.m"];(*This B kernel is defined by dB==dA.A, with A defined as the variable Atilde in the above line.*)
 
 
 Get["Letter.m"];
@@ -58,14 +66,12 @@ t1p=(patht/.t->1);
 
 
 BcOfB=N[B/.N[basisdef/.LetterRepm/.roott/.t1p/.t->1,50]/.LetterRepm/.roott/.t1p/.t->1,50];
-W3odd=Get["Int41-Final.m"];
-W3int=ReplacePart[Get["W3-integrals.m"],132->W3odd];
+W3odd=Get["mathcalP_W3.m"];
+W3int=ReplacePart[Get["Weight-3-Integrals.m"],123->W3odd];
 W3intt=W3int/.basisdef/.LetterRepm/.patht/.roott;
 
 
-BC0={-1,-1,-1,2,-1,-1,0,3/2,-1,-1,0,3/2,0,0,0,0,1,0,0,0,-1,-1,-1,2,-1,-1,-1,2,1/4,1/4,1/4,-(1/2),-1,-1,0,4/3,-(1/3),-(4/3),0,0,0,0,0,5/6,0,0,0,0,-1,-1,0,4/3,0,-(4/3),0,0,0,5/6,0,-(1/3),0,0,0,0,0,0,0,-(1/3),0,2/3,0,0,0,-(1/3),0,0,0,0,1/6,0,0,0,0,2/3,0,0,0,0,0,1/6,0,2/3,-1,-1,0,4/3,1/9,0,4/9,4/9,4/3,0,2,0,0,1/6,0,5/12,1/6,0,0,0,0,1/6,0,0,0,5/12,1/6,0,0,0,0,1/2,-(1/4),1/2,-(1/4),0,0,0,0,0,-(1/4),-(1/2),2/3,0,0,0,0,-(7/36),0,-(7/36),0,-(1/2),2/3,0,0,1,0,0,0,0,2/3,0,0,0,0,5/6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-(2/3),-(3/4),-(10/9),0,0,0,0,1/6,0,-(1/3),0,-(7/18),0,0,0,0,0,0,0,0,2/3,0,0,0,0,0,5/6,0,1/6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-(7/18),0,0,0,-(1/3),0,0,0,-(2/3),-(3/4),-(10/9),0,0,0,0,0,4/3,4/3,0,0,0,-(4/3),16/9,0,0,-(5/9),0,-(5/9),0,-(4/3),16/9,0,8/3,0,0,0,0,0,0,0,-(1/6),-(1/3),-(1/2),0,-(7/9),0,0,0,0,0,0,0,0,0,0,-(7/9),0,-(1/6),-(1/3),-(1/2),0,0,0,0,0,0,0,0,0,0,0,-(7/12),1/4,-(7/12),1/4,0,0,0,0,0,0,0,0,1/2,7/9,7/12,1/3,0,0,0,0,0,0,-(7/36),0,0,-(7/36),0,0,7/9,7/12,1/3,0,0,0,7/6,0,0,0,0};
-
-
+BC0=Get["./BC-W0W1W2W3.m"][[1]];
 BCW456=Get["./BC-W4W5W6-num180.m"];
 bcw[4,i_]:=BCW456[[1,i]]
 bcw[5,i_]:=BCW456[[2,i]]
@@ -75,6 +81,9 @@ bcw[6,i_]:=BCW456[[3,i]]
 At=Atilde/.LetterRepm/.patht/.roott;
 DtA=D[At,t];
 At1=Atilde/.(LetterRepm/.patht/.roott/.t->1);
+
+
+Variables[Atilde]
 
 
 (* ::Section:: *)
@@ -96,8 +105,8 @@ sol
 Bkernel=BcOfB-B/.(basisdef/.LetterRepm/.patht/.roott)/.(LetterRepm/.patht/.roott);
 
 
-w5contrib[mis_]:=DtA[[mis]] . Array[bcw[5,#]&,326]
-w4contrib[mis_]:=(At1-At)[[mis]] . DtA . Array[bcw[4,#]&,326]
+w5contrib[mis_]:=DtA[[mis]] . Array[bcw[5,#]&,316]
+w4contrib[mis_]:=(At1-At)[[mis]] . DtA . Array[bcw[4,#]&,316]
 w3contribpart1[mis_]:=(At-At1)[[mis]] . At . DtA . W3intt
 BkernelContrib[mis_]:=Bkernel[[mis]] . DtA . W3intt
 
@@ -105,7 +114,7 @@ BkernelContrib[mis_]:=Bkernel[[mis]] . DtA . W3intt
 W5ut[mis_]:=Module[{sol},
 Print["     Weight-5 UT[",mis ,"] ->> ",AbsoluteTiming[
 sol=bcw[5,mis]
-+NIntegrate[DtA[[mis]] . Array[bcw[4,#]&,326]+(At1-At)[[mis]] . DtA . W3intt,{t,0,1},Evaluate[Sequence@@NIntegrateOptions]]
++NIntegrate[DtA[[mis]] . Array[bcw[4,#]&,316]+(At1-At)[[mis]] . DtA . W3intt,{t,0,1},Evaluate[Sequence@@NIntegrateOptions]]
 ][[1]]," s "];
 sol
 ]
@@ -121,22 +130,22 @@ w5contrib[mis]+w4contrib[mis]+w3contribpart1[mis]+BkernelContrib[mis],
 sol]
 
 
-W1=Get["W1-integrals.m"];
-W2=Get["W2-integrals.m"];
-W3=Get["W3-integrals.m"];
+W1=Get["Weight-1-Integrals.m"];
+W2=Get["Weight-2-Integrals.m"];
+W3=W3int;
 
 
-Print["Evaluating The Liner 322.."]
-w0123={BC0[[322]],W1[[322]],W2[[322]],W3[[322]]}/.basisdef/.LetterRep/.RootDef/.{s12->-(79/46),s23->-(129/29),s34->-(89/36),s45->-(87/55),s15->-(51/13)};
+Print["Evaluating The Liner 312.."]
+w0123={BC0[[312]],W1[[312]],W2[[312]],W3[[312]]}/.basisdef/.LetterRep/.RootDef/.{s12->-(79/46),s23->-(129/29),s34->-(89/36),s45->-(87/55),s15->-(51/13)};
 
 
-w4num=W4ut[322];
+w4num=W4ut[312];
 
 
-w5num=W5ut[322];
+w5num=W5ut[312];
 
 
-w6num=W6ut[322];
+w6num=W6ut[312];
 
 
 Print["==================================================================="]

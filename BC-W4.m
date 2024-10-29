@@ -39,7 +39,7 @@
  (-229*Pi^4)/960, (71*Pi^4)/640, (-229*Pi^4)/960, (71*Pi^4)/640, 0, 0, 0, 
  (59*Pi^4)/90 + 2*Pi^2*Log[2]^2 - 2*Log[2]^4 - (43*Log[GoldenRatio]^4)/2 - 
   25*Log[GoldenRatio]^2*PolyLog[2, -GoldenRatio] - 48*PolyLog[4, 1/2] + 
-  21*PolyLog[4, GoldenRatio^(-1)] + 21*PolyLog[4, -GoldenRatio], BC132W4, 
+  21*PolyLog[4, GoldenRatio^(-1)] + 21*PolyLog[4, -GoldenRatio], Tcr[4,123], 
  (1627*Pi^4)/1152 + 4*Pi^2*Log[2]^2 - 4*Log[2]^4 - 
   (172*Log[GoldenRatio]^4)/3 - 
   (200*Log[GoldenRatio]^2*PolyLog[2, -GoldenRatio])/3 - 96*PolyLog[4, 1/2] + 
