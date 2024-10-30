@@ -23,7 +23,7 @@ This is the Liner:
 
 ## Description for all of these.  
 *   UT/<sectorid>.m 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	&rarr; UT integrals in each sector.
-*   Transcendental_Const/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &rarr; The definition of transcendental constant in the boundary values.
+*   Transcendental_Const/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &rarr; The definition of transcendental constant in the boundary values. Provided up to weight-5.
 *   Letter.m		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	&rarr; Some basic definition of the alphabet letters and the square root. 
 *   MI_all.txt		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	&rarr; All 316 master integrals provided by NeatIBP. 
 *   Weight-1-Integrals.m &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	&rarr; Weight-1-Integrals in terms of penatgon functions.
@@ -32,7 +32,8 @@ This is the Liner:
 *   basis-def.m	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		&rarr; explicit definition for F[i,j] in terms of Log and PolyLog.
 *   mathcalP_W3.m &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		&rarr; The only one parity odd function at Weight-3. 
 *   BC-W0W1W2W3.m &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		&rarr; The analytic boundary values from Weight-1 to Weight-3.
-*   under construction &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+*   BC-W4W5W6-num180.m &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   &rarr; The numeric boundary values from Weight-4 to Weight-6, with 180 digits.
+*   BC-W4W5W6-num280.m &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   &rarr; The numeric boundary values from Weight-4 to Weight-6. with 280 digits.
 
 
 ## Boundary Values: 
