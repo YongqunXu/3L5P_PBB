@@ -23,7 +23,7 @@ This is the Liner:
 
 ## Description for all of these.  
 *   UT/<sectorid>.m 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	&rarr; UT integrals in each sector.
-*   Transcendeltal_Const/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &rarr; 
+*   Transcendental_Const/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &rarr; The definition of transcendental constant in the boundary values.
 *   Letter.m		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	&rarr; Some basic definition of the alphabet letters and the square root. 
 *   MI_all.txt		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	&rarr; All 316 master integrals provided by NeatIBP. 
 *   Weight-1-Integrals.m &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	&rarr; Weight-1-Integrals in terms of penatgon functions.
@@ -34,5 +34,14 @@ This is the Liner:
 *   BC-W0W1W2W3.m &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		&rarr; The analytic boundary values from Weight-1 to Weight-3.
 *   under construction &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
+
+## Boundary Values: 
+*   Weight-0: Only Q numbers.
+*   Weight-1: All of them are 0.
+*   Weight-2: some Pi^2. 
+*   Weight-3: some Pi^3, Zeta[3], and some PolyLog function about GoldenRatio. 
+*   Weight-4: some Pi^4, and some PolyLog function about GoldenRatio and 2, and one extra constant Tcr[4,123] in ./Transcendental-Constant/Tc4-logli2.m
+*   Weight-5: some Zeta[3]Pi^2, Zeta[5], and some Tcr[5,i]...
+*   Weight-6: some Zeta[3]^3, Pi^6, and a lot of Tcr[6,i]...
 
 
