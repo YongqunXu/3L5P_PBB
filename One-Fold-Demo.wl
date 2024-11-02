@@ -71,7 +71,7 @@ W3int=ReplacePart[Get["Weight-3-Integrals.m"],123->W3odd];
 W3intt=W3int/.basisdef/.LetterRepm/.patht/.roott;
 
 
-BC0=Get["./BC-W0W1W2W3.m"][[1]];
+BC0=Get["./Boundary-Value-Analytic.m"][[1]];
 BCW456=Get["./BC-W4W5W6-num180.m"];
 bcw[4,i_]:=BCW456[[1,i]]
 bcw[5,i_]:=BCW456[[2,i]]
