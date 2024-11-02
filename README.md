@@ -22,7 +22,7 @@ This is the Liner:
 
 
 ## Description for all of these.  
-*   UT/<sectorid>.m 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	&rarr; UT integrals in each sector.
+*   Canonical_Basis.m 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	&rarr; The Uniform Transcendental basis that leads to canonical differential equation. 
 *   Transcendental_Const/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &rarr; The definition of transcendental constant in the boundary values. Provided up to weight-5.
 *   Letter.m		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	&rarr; Some basic definition of the alphabet letters and the square root. 
 *   MI_all.txt		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	&rarr; All 316 master integrals provided by NeatIBP. 
@@ -42,8 +42,7 @@ This is the Liner:
 *   Weight-2: some Pi^2. 
 *   Weight-3: some Pi^3, Zeta[3], and some PolyLog function about GoldenRatio. 
 *   Weight-4: some Pi^4, and some PolyLog function about GoldenRatio and 2, and one extra constant Tcr[4,123] in ./Transcendental-Constant/Tc4-logli2.m
-*   Weight-5: some Zeta[3]Pi^2, Zeta[5], and some constant: {bcw5[16], bcw5[43], bcw5[102], bcw5[103], bcw5[111], bcw5[113], 
- bcw5[131], bcw5[132], bcw5[136], bcw5[149], bcw5[324], bcw5[325]}. 
+*   Weight-5: some Zeta[3]Pi^2, Zeta[5], and some constant and some constant: {bcw5[16], bcw5[43], bcw5[102], bcw5[103], bcw5[111], bcw5[113], bcw5[131], bcw5[132], bcw5[136], bcw5[149], bcw5[324], bcw5[325]}.
 *   Weight-6: some Zeta[3]^3, Pi^6, and a lot of Tcr[6,i]...
 
 

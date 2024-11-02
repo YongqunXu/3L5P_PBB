@@ -135,7 +135,7 @@ W2=Get["Weight-2-Integrals.m"];
 W3=W3int;
 
 
-Print["Evaluating The Liner 312.."]
+Print["Evaluating The Numer.312 UT integral. "];
 w0123={BC0[[312]],W1[[312]],W2[[312]],W3[[312]]}/.basisdef/.LetterRep/.RootDef/.{s12->-(79/46),s23->-(129/29),s34->-(89/36),s45->-(87/55),s15->-(51/13)};
 
 
