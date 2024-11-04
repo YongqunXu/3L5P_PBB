@@ -29,8 +29,8 @@ This is the Liner:
 *   **Weight-1-Integrals.m** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	&rarr; Weight-1 integrals in terms of penatgon functions.
 *   **Weight-2-Integrals.m** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	&rarr; Weight-2 integrals in terms of penatgon functions.
 *   **Weight-3-Integrals.m** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	&rarr; the postion 123 is just a palce holder for the only one parity odd function. see mathcalP_W3.m
-*   **basis-def.m** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		&rarr; Explicit definition for `F[i,j]` in terms of `Log`, `PolyLog[2,_ ]` and  `PolyLog[3,_ ]`. 
-*   **mathcalP_W3.m** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		&rarr; The only one parity odd function at Weight-3, written in `Log`, `PolyLog[2,_ ]` and  `PolyLog[3,_ ]`. 
+*   **basis-def.m** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		&rarr; Explicit definition for `F[i,j]` in terms of `Log`, `PolyLog[2,_]` and  `PolyLog[3,_]`. 
+*   **mathcalP_W3.m** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		&rarr; The only one parity odd function at Weight-3, written in `Log`, `PolyLog[2,_]` and  `PolyLog[3,_]`. 
 *   **Boundary-Values-Analytics.m** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		&rarr; The analytic boundary values from weight-1 to weight-6.
 *   **BC-W4W5W6-num180.m** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   &rarr; The numeric boundary values from Weight-4 to Weight-6, with 180 digits.
 *   **BC-W4W5W6-num280.m** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   &rarr; The numeric boundary values from Weight-4 to Weight-6. with 280 digits.
