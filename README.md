@@ -24,17 +24,18 @@ This is the Liner:
 ## Description for all of these.  
 *   Canonical_Basis.m 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	&rarr; The Uniform Transcendental basis that leads to canonical differential equation. 
 *   Transcendental_Const/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &rarr; The definition of transcendental constants in the boundary values. 
-*   Letter.m		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	&rarr; Some basic definition of the alphabet letters and the square root. 
+*   Letter.m		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	&rarr; Definition of the 31 pentagon alphabet letters. 
 *   MI_all.txt		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	&rarr; All 316 master integrals provided by NeatIBP. 
-*   Weight-1-Integrals.m &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	&rarr; Weight-1-Integrals in terms of penatgon functions.
-*   Weight-2-Integrals.m &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	&rarr; these function are simply Log and PolyLog in Mathematica, most of them are labeled as F[i,j].
+*   Weight-1-Integrals.m &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	&rarr; Weight-1 integrals in terms of penatgon functions.
+*   Weight-2-Integrals.m &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	&rarr; Weight-2 integrals in terms of penatgon functions.
 *   Weight-3-Integrals.m &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	&rarr; the postion 123 is just a palce holder for the only one parity odd function. see mathcalP_W3.m
 *   basis-def.m	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		&rarr; Explicit definition for F[i,j] in terms of Log and PolyLog.
-*   mathcalP_W3.m &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		&rarr; The only one parity odd function at Weight-3, written in Log, PolyLog[2,_] and  PolyLog[3,_]. 
+*   mathcalP_W3.m &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		&rarr; The only one parity odd function at Weight-3, written in Log, PolyLog[2,_ ] and  PolyLog[3,_ ]. 
 *   Boundary-Values-Analytics.m &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		&rarr; The analytic boundary values from weight-1 to weight-6.
 *   BC-W4W5W6-num180.m &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   &rarr; The numeric boundary values from Weight-4 to Weight-6, with 180 digits.
 *   BC-W4W5W6-num280.m &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   &rarr; The numeric boundary values from Weight-4 to Weight-6. with 280 digits.
-*   One-Fold-Demo.wl &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   &rarr; A proof-of-concept demostration to evaluate the UT integrals defined in the 'Canonical_Basis.m' via one-fold integration with auxiliary B-matrix at a generic point in a smaller Euclidean Region where the 1-5 and 16-20 letter are negative. 
+*   One-Fold-Demo.wl &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   &rarr; A proof-of-concept demostration to evaluate the UT integrals defined in the 'Canonical_Basis.m' via one-fold integration with auxiliary B-matrix at a generic point in a smaller Euclidean Region where the 1-5 and 16-20 letter are negative.
+*   Atilde.m &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   &rarr; The Canonical differential equation matrix. 
 
 ## Transcendental Constant In Boundary Values: 
 *   Weight-0: Only Q numbers.
