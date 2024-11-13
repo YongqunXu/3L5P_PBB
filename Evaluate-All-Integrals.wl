@@ -1,16 +1,21 @@
 (* ::Package:: *)
 
 Print["========================================================================================================"];
-Print["Analytic Computation of Three-Loop Five-Point Feynman Integrals"];
+Print["Analytic Computation of Three-Loop Five-Point Feynman Integrals: Pentaon-box-box"];
 Print["Yuanche Liu, Antonela Matija\[SHacek]i\[CAcute],  Julian Miczajka, Yingxuan Xu, Yongqun Xu, Yang Zhang"];
 Print["ArXiv: 2411.xxxx"];
 Print["yongqunxu@mail.ustc.edu.cn"];
 Print["========================================================================================================"];
 
 
-(*************************User Input Information*****************************************)
+(*********************************** User Input *****************************************)
+
 destination=Values[{s12->-(79/46),s23->-(129/29),s34->-(89/36),s45->-(87/55),s15->-(51/13)}];
 NIntegrateOptions={WorkingPrecision->2^5,PrecisionGoal->2^5,AccuracyGoal->2^6,MaxRecursion->20};
+whichint=312;
+howmanykernels=50;
+outputfilename="UT-int-p1-num.m";
+
 (****************************************************************************************)
 
 
@@ -83,9 +88,6 @@ DtA=D[At,t];
 At1=Atilde/.(LetterRepm/.patht/.roott/.t->1);
 
 
-Variables[Atilde]
-
-
 (* ::Section:: *)
 (*W4*)
 
@@ -135,28 +137,23 @@ W2=Get["Weight-2-Integrals.m"];
 W3=W3int;
 
 
-Print["Evaluating The Numer.312 UT integral. "];
-w0123={BC0[[312]],W1[[312]],W2[[312]],W3[[312]]}/.basisdef/.LetterRep/.RootDef/.{s12->-(79/46),s23->-(129/29),s34->-(89/36),s45->-(87/55),s15->-(51/13)};
+Print["Evaluating The Numer."<>ToString[whichint]<>" UT integral. "];
+w0123=N[{BC0,W1,W2,W3}/.basisdef/.LetterRep/.RootDef/.{s12->-(79/46),s23->-(129/29),s34->-(89/36),s45->-(87/55),s15->-(51/13)},32];
 
 
-w4num=W4ut[312];
+Print["Preparing Parallel At weight-4 ..."];
+w4num=ParallelTable[W4ut[i],{i,316},DistributedContexts->Automatic,Method->"FinestGrained"];
 
 
-w5num=W5ut[312];
+Print["Preparing Parallel At weight-5 ..."];
+w5num=ParallelTable[W5ut[i],{i,316},DistributedContexts->Automatic,Method->"FinestGrained"];
 
 
-w6num=W6ut[312];
+Print["Preparing Parallel At weight-6 ..."];
+w6num=ParallelTable[W6ut[i],{i,316},DistributedContexts->Automatic,Method->"FinestGrained"];
 
 
-Print["==================================================================="]
-	Print["\t\t Weight-0: ", N[w0123[[1]],32]];
-	Print["\t\t Weight-1: ", N[w0123[[2]],32]];
-	Print["\t\t Weight-2: ", N[w0123[[3]],32]];
-	Print["\t\t Weight-3: ", N[w0123[[4]],32]];
-	Print["\t\t Weight-4: ", w4num];
-	Print["\t\t Weight-5: ", w5num];
-	Print["\t\t Weight-6: ", w6num];
-Print["==================================================================="]
+Export[outputfilename,Join[w0123,{w4num,w5num,w6num}]]
 
 
 Print["\n Evaluation Finished.. Time Used: ",ToString[Ceiling[AbsoluteTime[]-timer],InputForm]," s. Exit."]
