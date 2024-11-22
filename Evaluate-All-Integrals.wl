@@ -12,7 +12,6 @@ Print["=========================================================================
 
 destination=Values[{s12->-(79/46),s23->-(129/29),s34->-(89/36),s45->-(87/55),s15->-(51/13)}];
 NIntegrateOptions={WorkingPrecision->2^5,PrecisionGoal->2^5,AccuracyGoal->2^6,MaxRecursion->20};
-whichint=312;
 howmanykernels=50;
 outputfilename="UT-int-p1-num.m";
 
@@ -41,7 +40,6 @@ to avoid unnecessary branch problem*)
 
 
 basisdef=Get["basis-def.m"];(*The definition of the function F[i,j]*)
-B=Get["Btilde.m"];(*This B kernel is defined by dB==dA.A, with A defined as the variable Atilde in the above line.*)
 
 
 Get["Letter.m"];
@@ -68,13 +66,15 @@ patht=Thread[Array[m,5]->-destination(t)+ConstantArray[1,5](1-t)];
 roott=Simplify[RootDefm/.patht];
 t0p=(patht/.t->0);
 t1p=(patht/.t->1);
+letterpath=Simplify[LetterRepm/.patht/.roott,0<t<1];
 
+Print["Evaluate basis functions on the path..."];
+basisdefpath=(basisdef/.LetterRepm/.patht/.roott)/.{Log[a_]:>FullSimplify[Log[a],0<t<1],PolyLog[b_,a_]:>Simplify[PolyLog[b,a],0<t<1]};
 
-BcOfB=N[B/.N[basisdef/.LetterRepm/.roott/.t1p/.t->1,50]/.LetterRepm/.roott/.t1p/.t->1,50];
+Print["Loading Weight-3 functions..."];
 W3odd=Get["mathcalP_W3.m"];
 W3int=ReplacePart[Get["Weight-3-Integrals.m"],123->W3odd];
-W3intt=W3int/.basisdef/.LetterRepm/.patht/.roott;
-
+W3intt=W3int/.basisdefpath/.letterpath;
 
 BC0=Get["./Boundary-Value-Analytic.m"][[1]];
 BCW456=Get["./BC-W4W5W6-num180.m"];
@@ -82,54 +82,59 @@ bcw[4,i_]:=BCW456[[1,i]]
 bcw[5,i_]:=BCW456[[2,i]]
 bcw[6,i_]:=BCW456[[3,i]]
 
+Print["Evaluating Atilde on the path.."];
+At=Atilde/.letterpath;
+DtA=Together[D[At,t]];
 
-At=Atilde/.LetterRepm/.patht/.roott;
-DtA=D[At,t];
-At1=Atilde/.(LetterRepm/.patht/.roott/.t->1);
 
+w5contrib[mis_]:=DtA[[mis]] . Array[bcw[5,#]&,316]
+w4contrib[mis_]:=Module[{Atmis=At[[mis]]},((Atmis/.t->1)-Atmis) . DtA . Array[bcw[4,#]&,316]]
+w3contrib[mis_]:=Module[{Atmis=At[[mis]]},(Atmis-(Atmis/.t->1)) . At . DtA . W3intt]
 
-(* ::Section:: *)
-(*W4*)
+BkernelContrib[mis_]:=Module[{bp=Get["./b-line/B-"<>ToString[mis]<>".m"],bk},
+bk=N[bp/.Dispatch[N[basisdefpath/.t->1,50]]/.letterpath/.t->1,50]-bp/.Dispatch[basisdefpath]/.letterpath;
+bk . DtA . W3intt]
 
 
 W4ut[mis_]:=Module[{sol},
 Print["     Weight-4 UT[",mis ,"] ->> ",AbsoluteTiming[
 sol=bcw[4,mis]+NIntegrate[DtA[[mis]] . W3intt,{t,0,1},Evaluate[Sequence@@NIntegrateOptions]]
-][[1]]," s "];
-sol
-]
+][[1]]," s "];sol]
 
 
-(* ::Section:: *)
-(*W5 -W6*)
-
-
-Bkernel=BcOfB-B/.(basisdef/.LetterRepm/.patht/.roott)/.(LetterRepm/.patht/.roott);
-
-
-w5contrib[mis_]:=DtA[[mis]] . Array[bcw[5,#]&,316]
-w4contrib[mis_]:=(At1-At)[[mis]] . DtA . Array[bcw[4,#]&,316]
-w3contribpart1[mis_]:=(At-At1)[[mis]] . At . DtA . W3intt
-BkernelContrib[mis_]:=Bkernel[[mis]] . DtA . W3intt
-
-
-W5ut[mis_]:=Module[{sol},
+W5ut[mis_]:=Module[{Atmis=At[[mis]],sol},
 Print["     Weight-5 UT[",mis ,"] ->> ",AbsoluteTiming[
 sol=bcw[5,mis]
-+NIntegrate[DtA[[mis]] . Array[bcw[4,#]&,316]+(At1-At)[[mis]] . DtA . W3intt,{t,0,1},Evaluate[Sequence@@NIntegrateOptions]]
-][[1]]," s "];
-sol
-]
++NIntegrate[DtA[[mis]] . Array[bcw[4,#]&,316]+((Atmis/.t->1)-Atmis) . DtA . W3intt,{t,0,1},Evaluate[Sequence@@NIntegrateOptions]]
+][[1]]," s "];sol]
 
 
-W6ut[mis_]:=Module[{sol},
-Print["     Weight-6 UT[",mis ,"] -->> ",AbsoluteTiming[
-sol=bcw[6,mis]
-+NIntegrate[
-w5contrib[mis]+w4contrib[mis]+w3contribpart1[mis]+BkernelContrib[mis],
-{t,0,1},Evaluate[Sequence@@NIntegrateOptions]]
-][[1]]," s "];
-sol]
+W6utfromw5[mis_]:=Module[{sol},
+	Print["     Weight-6 UT[",mis ,"] weight-5 contrib-->> ",AbsoluteTiming[
+	sol=bcw[6,mis]+NIntegrate[w5contrib[mis],
+	{t,0,1},Evaluate[Sequence@@NIntegrateOptions]]
+	][[1]]," s "];sol]
+
+W6utfromw4[mis_]:=Module[{sol},
+	Print["     Weight-6 UT[",mis ,"] weight-4 contrib -->> ",AbsoluteTiming[
+	sol=NIntegrate[
+	w4contrib[mis],
+	{t,0,1},Evaluate[Sequence@@NIntegrateOptions]]
+	][[1]]," s "];sol]
+
+W6utfromw3[mis_]:=Module[{sol},
+	Print["     Weight-6 UT[",mis ,"] weight-3 contrib -->> ",AbsoluteTiming[
+	sol=NIntegrate[
+	w3contrib[mis],
+	{t,0,1},Evaluate[Sequence@@NIntegrateOptions]]
+	][[1]]," s "];sol]
+
+W6utfromwB[mis_]:=Module[{sol},
+	Print["     Weight-6 UT[",mis ,"] B kernel contrib -->> ",AbsoluteTiming[
+	sol=NIntegrate[
+	BkernelContrib[mis],
+	{t,0,1},Evaluate[Sequence@@NIntegrateOptions]]
+	][[1]]," s "];sol]
 
 
 W1=Get["Weight-1-Integrals.m"];
@@ -137,23 +142,36 @@ W2=Get["Weight-2-Integrals.m"];
 W3=W3int;
 
 
-Print["Evaluating The Numer."<>ToString[whichint]<>" UT integral. "];
+Print["Evaluating weight-0 to weight-3 UT integral. "];
 w0123=N[{BC0,W1,W2,W3}/.basisdef/.LetterRep/.RootDef/.{s12->-(79/46),s23->-(129/29),s34->-(89/36),s45->-(87/55),s15->-(51/13)},32];
 
+Print["Distributing Definitions...",AbsoluteTiming[DistributeDefinitions[W4ut]]];
+Print["Distributing Definitions...",AbsoluteTiming[DistributeDefinitions[W5ut]]];
+Print["Distributing Definitions...",AbsoluteTiming[DistributeDefinitions[W6utfromw5]]];
+Print["Distributing Definitions...",AbsoluteTiming[DistributeDefinitions[W6utfromw4]]];
+Print["Distributing Definitions...",AbsoluteTiming[DistributeDefinitions[W6utfromw3]]];
+Print["Distributing Definitions...",AbsoluteTiming[DistributeDefinitions[W6utfromwB]]];
 
-Print["Preparing Parallel At weight-4 ..."];
-w4num=ParallelTable[W4ut[i],{i,316},DistributedContexts->Automatic,Method->"FinestGrained"];
+Print["LaunchKernels...",AbsoluteTiming[LaunchKernels[howmanykernels];]];
+
+alltask={
+Table[ParallelSubmit[{i},W6utfromwB[i]],{i,316}],
+Table[ParallelSubmit[{i},W6utfromw3[i]],{i,316}],
+Table[ParallelSubmit[{i},W6utfromw4[i]],{i,316}],
+Table[ParallelSubmit[{i},W6utfromw5[i]],{i,316}],
+Table[ParallelSubmit[{i},W5ut[i]],{i,316}],
+Table[ParallelSubmit[{i},W4ut[i]],{i,316}]
+};
 
 
-Print["Preparing Parallel At weight-5 ..."];
-w5num=ParallelTable[W5ut[i],{i,316},DistributedContexts->Automatic,Method->"FinestGrained"];
+Print["Entering Parallel..."];
+Print["Finished Parallel NIntegrate: ",AbsoluteTiming[out1=WaitAll[alltask];]];
 
 
-Print["Preparing Parallel At weight-6 ..."];
-w6num=ParallelTable[W6ut[i],{i,316},DistributedContexts->Automatic,Method->"FinestGrained"];
+w4num=out1[[6]];
+w5num=out1[[5]];
+w6num=Total[out1[[;;4]]];
 
-
-Export[outputfilename,Join[w0123,{w4num,w5num,w6num}]]
-
+Export[outputfilename,Join[w0123,{w4num,w5num,w6num}]];
 
 Print["\n Evaluation Finished.. Time Used: ",ToString[Ceiling[AbsoluteTime[]-timer],InputForm]," s. Exit."]
