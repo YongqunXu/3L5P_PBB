@@ -17,6 +17,13 @@ outputfilename="UT-int-p1-num.m";
 
 (****************************************************************************************)
 
+If[
+DirectoryQ["./b-line"],
+Print[" B has been written line by line. Ready to evaluate all integrals. "],
+	B = Get["Btilde.m"];    Print["Writing B tilde line by line..."];
+	Do[Export["./b-line/B-" <> ToString[i] <> ".m", B[[i]]] , {i, 316}]
+ ];
+Clear[B];
 
 Print["\n This is a proof-of-concept demostration to evaluate the UT integrals via one-fold integration with auxiliary B-matrix at: \n \n "]
 Print["  ",Thread[{s12,s23,s34,s45,s15}->destination]," \n \n "];
